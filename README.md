@@ -7,9 +7,13 @@
 
 `$ gem install 'sinatra'`
 
-## Deploy
-### Listens on 127.0.0.1 8080
+## Start Service
 
 `./rsa.rb`
+
+## Notes
+
+- Listens on 127.0.0.1 8080
+- Receives parameters "user" and "pass" in a POST request to '/'
 
 
