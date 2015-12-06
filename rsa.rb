@@ -12,10 +12,11 @@ set :bind, '127.0.0.1'
 set :port, '8080'
 
 post '/' do
-  encrypted_output = []
-  [ params[:user], params[:pass] ].each do |payload|
-      encrypted_output << Base64.strict_encode64(public_key.public_encrypt(payload))
-  end
-  encrypted_output.join("\n")
+  response = {
+    user: Base64.strict_encode64(public_key.public_encrypt(params[:user])),
+    pass: Base64.strict_encode64(public_key.public_encrypt(params[:pass]))
+  }
+
+  JSON.pretty_generate(response)
 end
 
